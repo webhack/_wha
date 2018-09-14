@@ -1,6 +1,7 @@
 /node_modules/
 /app/js/scripts.min.js
 /.git/
+/.idea/
 /app/css/
 /**/_backstage
 /**/package-lock.json

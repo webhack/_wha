@@ -1,0 +1,37 @@
+{
+  "name": "wha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webhack/_wha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webhack/_wha/issues"
+  },
+  "homepage": "https://github.com/webhack/_wha#readme",
+  "devDependencies": {
+    "gulp-install": "^1.1.0",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "uikit": "^3.0.0-dev.de71b8d",
+    "browser-sync": "^2.24.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-rsync": "0.0.8",
+    "gulp-uglify": "^3.0.1",
+    "gulp-util": "^3.0.8"
+  }
+}
