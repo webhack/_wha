@@ -22,6 +22,7 @@ gulp.task('styles', function() {
 
 gulp.task('js', function() {
 	return gulp.src([
+		'app/js/uikit/uikit.js',
 		'app/js/common.js', // Always at the end
 		])
 	.pipe(concat('scripts.min.js'))

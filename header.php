@@ -25,7 +25,7 @@
 <?php do_action( 'before' ); ?>
 
 <div class="uk-offcanvas-content">
-    <header style="z-index: 980;" uk-sticky="top: 200; bottom: #animation" class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+    <header style="z-index: 980;" uk-sticky="bottom: #animation" class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
         <div class="uk-container">
             <nav class="uk-navbar">
                 <div class="uk-navbar-left">
@@ -56,7 +56,3 @@
         </div>
     </header>
 </div>
-
-<section class="uk-background-transparent uk-panel">
-    <div class="uk-container">
-        <div class="uk-grid uk-child-width-1-1">

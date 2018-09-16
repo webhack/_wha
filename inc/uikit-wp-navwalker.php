@@ -18,7 +18,7 @@ class wp_uikit_navwalker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$indent = str_repeat( "\t", $depth );
-		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\">\n";
+		$output .= "\n$indent<ul uk-dropdown role=\"menu\" class=\" uk-nav uk-nav-sub uk-dropdown-nav uk-margin-remove\">\n";
 	}
 	/**
 	 * @see Walker::start_el()
@@ -54,9 +54,9 @@ class wp_uikit_navwalker extends Walker_Nav_Menu {
 			$classes[] = 'menu-item-' . $item->ID;
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 			if ( $args->has_children )
-				$class_names .= ' dropdown';
+				$class_names .= ' uk-parent';
 			if ( in_array( 'current-menu-item', $classes ) )
-				$class_names .= ' active';
+				$class_names .= ' uk-active';
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
@@ -95,7 +95,7 @@ class wp_uikit_navwalker extends Walker_Nav_Menu {
 			else
 				$item_output .= '<a'. $attributes .'>';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
+			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span uk-icon="icon: chevron-down"></span></a>' : '</a>';
 			$item_output .= $args->after;
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
 		}
