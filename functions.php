@@ -51,6 +51,13 @@ if ( ! function_exists( '_wha_setup' ) ) :
          * to change '_wha' to the name of your theme in all the template files
          */
         load_theme_textdomain( '_wha', THEME_DIR_PATH . '/languages' );
+
+        /**
+	 * This theme uses wp_nav_menu() in one location.
+	*/
+	register_nav_menus( array(
+		'primary'  => __( 'Header menu', '_tk' ),
+		) );
     }
 endif; // _wha_setup
 add_action( 'after_setup_theme', '_wha_setup' );
@@ -183,6 +190,10 @@ function _wha_link_pages() {
     endif;
 }
 
+/**
+ * Load custom WordPress nav walker.
+ */
+require THEME_DIR_PATH . '/inc/uikit-wp-navwalker.php';
 
 /**
  * Adds WooCommerce support

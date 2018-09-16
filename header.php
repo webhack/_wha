@@ -25,7 +25,7 @@
 <?php do_action( 'before' ); ?>
 
 <div class="uk-offcanvas-content">
-    <header uk-sticky="media: 960" class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+    <header style="z-index: 980;" uk-sticky="top: 200; bottom: #animation" class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
         <div class="uk-container">
             <nav class="uk-navbar">
                 <div class="uk-navbar-left">
@@ -38,12 +38,19 @@
                     </a>
                 </div>
                 <div class="uk-navbar-right">
-                    <ul class="uk-navbar-nav uk-visible@m">
-                        <li class="uk-active"><a href="#">Home</a></li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Home</a></li>
-                    </ul>
+                    <!-- The WordPress Menu goes here -->
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_location'    => 'primary',
+                            'depth'             => 2,
+                            'container'         => 'div',
+                            'container_id'      => '',
+                            'container_class'   => 'uk-navbar-right',
+                            'menu_class'        => 'uk-navbar-nav uk-visible@m',
+                            'menu_id'           => 'main-menu',
+                            'walker'            => new wp_uikit_navwalker()
+                        )
+                    ); ?>
                 </div>
             </nav>
         </div>

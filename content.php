@@ -15,7 +15,7 @@
 <article class="uk-article" id="post-<?php the_ID(); ?>">
 
     <h1 class="uk-article-title"><a class="uk-link-reset" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-
+asdasd
     <?php if ( 'post' == get_post_type() ) : ?>
     <p class="uk-article-meta"><?php _wha_posted_on(); ?></p>
     <?php endif; ?>
