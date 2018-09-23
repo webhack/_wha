@@ -9,60 +9,62 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <title><?php wp_title('|', true, 'right'); ?></title>
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php do_action( 'before' ); ?>
+<?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
-    <header style="z-index: 980;" uk-sticky="bottom: #animation" class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+    <header style="z-index: 980;" uk-sticky="bottom: #animation"
+            class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
         <div class="uk-container"><?php
-$nav = wp_nav_menu(array(
-    'theme_location' => 'primary',
-    'menu_class'     => 'uk-navbar-nav uk-visible@m',
-    'depth'          => 2,
-    'walker'         => new WordpressUikitMenuWalker('navbar'),
-    'echo'           => false,
-    'fallback_cb'    => false
-));
-$nav_offcanvas = wp_nav_menu(array(
-    'theme_location' => 'primary',
-    'menu_class'     => 'uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical',
-    'depth'          => 2,
-    'walker'         => new WordpressUikitMenuWalker('offcanvas'),
-    'echo'           => false,
-    'fallback_cb'    => false,
-    'container'       => 'div',
-    'container_class' => 'uk-offcanvas-bar uk-flex uk-flex-column'
-));
-?>
-<?php if ($nav) : ?>
-    <nav id="navbar" class="uk-navbar">
-        <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo"></a>
-        </div>
-        <div class="uk-navbar-right">
-            <?= $nav ?>
+            $nav = wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class' => 'uk-navbar-nav uk-visible@m',
+                'depth' => 2,
+                'walker' => new WordpressUikitMenuWalker('navbar'),
+                'echo' => false,
+                'fallback_cb' => false
+            ));
+            $nav_offcanvas = wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class' => 'uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical',
+                'depth' => 2,
+                'walker' => new WordpressUikitMenuWalker('offcanvas'),
+                'echo' => false,
+                'fallback_cb' => false,
+                'container' => 'div',
+                'container_class' => 'uk-offcanvas-bar uk-flex uk-flex-column'
+            ));
+            ?>
+            <?php if ($nav) : ?>
+                <nav id="navbar" class="uk-navbar">
+                    <div class="uk-navbar-left">
+                        <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI.'/app/img/logo.svg');?></a>
+                    </div>
+                    <div class="uk-navbar-right">
+                        <?= $nav ?>
 
 
-
-
-            <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon" uk-toggle="target: #offcanvas-push"></a>
-        </div>
-    </nav>
-    <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: push;overlay: true">
-            <?= $nav_offcanvas ?>
-    </div>
-<?php endif; ?>
+                        <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle
+                           class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
+                           uk-toggle="target: #offcanvas-push"></a>
+                    </div>
+                </nav>
+                <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: push;overlay: true">
+                    <?= $nav_offcanvas ?>
+                </div>
+            <?php endif; ?>
         </div>
     </header>
+    <div class="uk-container">
