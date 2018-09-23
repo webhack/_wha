@@ -52,6 +52,9 @@ $nav_offcanvas = wp_nav_menu(array(
         <div class="uk-navbar-right">
             <?= $nav ?>
 
+
+
+
             <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon" uk-toggle="target: #offcanvas-push"></a>
         </div>
     </nav>

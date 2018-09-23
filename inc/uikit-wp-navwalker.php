@@ -30,6 +30,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
      * @param int $id
      *                Current item ID.
      */
+
     public function start_el(&$output, $item, $depth = 0, $args = array(), $current_object_id = 0) 
     {
         $indent = str_repeat("\t", $depth);
@@ -43,7 +44,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         // prepare additional attributes for link
         $link_attributes   = array();
         $link_attributes[] = sprintf('href="%s"', $item->url);
-        $link_attributes[] = sprintf('id="menu-item-link-%s"', $item->ID);
+//        $link_attributes[] = sprintf('id="menu-item-link-%s"', $item->ID);
         if (!empty($item->attr_title)) $link_attributes[] = sprintf('title="%s"', $item->attr_title);
         // prepare title/content for link
         $link_title = $item->title;
@@ -55,7 +56,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         // if this element has children
         if ($this->has_children) {
             $li_classes[] = 'uk-parent';
-            if ($this->_type == 'navbar') $li_attributes[] = 'data-uk-dropdown=""';
+//            if ($this->_type == 'navbar') $li_attributes[] = 'data-uk-dropdown=""';
         }
         // apply filters
         $li_id = apply_filters('nav_menu_item_id', $li_id, $item, $args);
@@ -66,8 +67,12 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         // render link
         $link  = $args->before;
         $link .= sprintf('<a %s>', implode(" ", $link_attributes));
+        if (get_post_meta($item->ID, '_menu_item_icon')) $link .= '<span class="uk-margin-small-right" uk-icon="icon: '.get_post_meta($item->ID, '_menu_item_icon', true).'"></span>';
         $link .= $args->link_before;
         $link .= $link_title;
+        if ($this->has_children) {
+            $link .= '<span uk-icon="icon:  triangle-down"></span>';
+        }
         $link .= $args->link_after;
         $link .= "</a>";
         $link .= $args->after;
@@ -75,7 +80,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         $output .= $indent . '<li ' . implode(" ", $li_attributes) . '>' . $link . "\n";
         if ($this->has_children && $depth == 0) {
             if ($this->_type == 'navbar') {
-                $output .= $indent . '<div class="uk-dropdown uk-dropdown-navbar">' . "\n";
+                $output .= $indent . '<div class="uk-margin-remove" uk-dropdown="animation: uk-animation-slide-top-small; duration: 500">' . "\n";
             }
         }
     }
@@ -115,7 +120,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
     {
         $indent = str_repeat("\t", $depth);
         if ($this->_type == 'navbar') {
-            $output .= $indent . '<ul class="uk-nav uk-nav-navbar">' . "\n";
+            $output .= $indent . '<ul class="uk-nav uk-dropdown-nav">' . "\n";
         }
         else if ($this->_type == 'offcanvas') {
             $output .= $indent . '<ul class="uk-nav-sub">' . "\n";

@@ -197,6 +197,10 @@ function _wha_link_pages() {
 }
 
 /**
+ * Load custom fields in menu (icon field)
+ */
+require THEME_DIR_PATH . '/inc/nav-menu-item-custom-fields.php';
+/**
  * Load custom WordPress nav walker.
  */
 require THEME_DIR_PATH . '/inc/uikit-wp-navwalker.php';
