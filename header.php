@@ -37,11 +37,13 @@ $nav = wp_nav_menu(array(
 ));
 $nav_offcanvas = wp_nav_menu(array(
     'theme_location' => 'primary',
-    'menu_class'     => 'uk-nav uk-nav-offcanvas',
+    'menu_class'     => 'uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical',
     'depth'          => 2,
     'walker'         => new WordpressUikitMenuWalker('offcanvas'),
     'echo'           => false,
-    'fallback_cb'    => false
+    'fallback_cb'    => false,
+    'container'       => 'div',
+    'container_class' => 'uk-offcanvas-bar uk-flex uk-flex-column'
 ));
 ?>
 <?php if ($nav) : ?>
@@ -58,10 +60,8 @@ $nav_offcanvas = wp_nav_menu(array(
             <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon" uk-toggle="target: #offcanvas-push"></a>
         </div>
     </nav>
-    <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: push">
-        <div class="uk-offcanvas-bar">
+    <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: push;overlay: true">
             <?= $nav_offcanvas ?>
-        </div>
     </div>
 <?php endif; ?>
         </div>
