@@ -39,7 +39,7 @@ $nav_offcanvas = wp_nav_menu(array(
     'theme_location' => 'primary',
     'menu_class'     => 'uk-nav uk-nav-offcanvas',
     'depth'          => 2,
-    'walker'         => new WordpressUikitMenuWalker('navbar'),
+    'walker'         => new WordpressUikitMenuWalker('offcanvas'),
     'echo'           => false,
     'fallback_cb'    => false
 ));
