@@ -84,6 +84,7 @@ function _wha_scripts() {
     wp_enqueue_style( '_wha-main-styles', THEME_DIR_URI . '/app/css/main.min.css', false, '1.0.0' );
 
 
+    wp_enqueue_script("jquery");
     // load bootstrap js
     wp_enqueue_script('_wha-main', THEME_DIR_URI . '/app/js/scripts.min.js', array('jquery') );
     wp_enqueue_script('_wha-uikit', 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js', array('jquery') );

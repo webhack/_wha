@@ -1,5 +1,33 @@
 @import "header";
 
-.elementor-column-gap-default>.elementor-row>.elementor-column>.elementor-element-populated {
-	//padding: 0 !important;
+div.wpcf7-response-output {
+  position: relative;
+  background: none;
+  margin: 0;
+  padding: 15px 29px 15px 15px;
+  border:1px solid transparent;
+}
+
+div.wpcf7-mail-sent-ok {
+  color: $alert-success-color;
+  border:1px solid $alert-success-color;
+}
+
+.uk-input, .uk-select, .uk-textarea {
+  border:1px solid transparent;
+}
+
+/*
+ * Error
+ */
+.wpcf7-not-valid, .wpcf7-not-valid:focus {
+  color: $form-danger-color;
+  border-color: $form-danger-color;
+}
+
+.uk-light {
+  .wpcf7-not-valid, .wpcf7-not-valid:focus {
+    color: $form-danger-color;
+    border-color: $form-danger-color;
+  }
 }
