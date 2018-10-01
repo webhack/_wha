@@ -66,6 +66,12 @@
                 'container' => 'div',
                 'container_class' => 'uk-offcanvas-bar uk-flex uk-flex-column'
             ));
+            if (!get_theme_mod('wha_logo')) {
+                $wha_logo = file_get_contents(THEME_DIR_URI . '/app/img/logo.svg');
+            } else {
+                $wha_logo = '<img src="'.get_theme_mod('wha_logo').'" alt="logo" />';
+            }
+            $logo = '<a class="uk-navbar-item uk-logo">'.$wha_logo.'</a>';
             $logo_position = get_theme_mod('wha_header_position', 'left');
             ?>
             <?php if ($nav) : ?>
@@ -82,7 +88,7 @@
                                uk-toggle="target: #offcanvas-push"></a>
                         </div>
                         <div class="uk-navbar-right">
-                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                            <?=$logo; ?>
                         </div>
                         <?php
                     } elseif ($logo_position == 'center') {
@@ -92,7 +98,7 @@
                             <div class="uk-navbar-center-left">
                                 <?= $nav ?>
                             </div>
-                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                            <?=$logo?>
                             <div class="uk-navbar-center-right">
                                 <?= $navsec ?>
                             </div>
@@ -105,7 +111,7 @@
                     } else {
                         ?>
                         <div class="uk-navbar-left">
-                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                            <?=$logo?>
                         </div>
                         <div class="uk-navbar-right">
                             <?= $nav ?>

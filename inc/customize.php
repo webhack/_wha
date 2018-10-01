@@ -10,6 +10,24 @@ function wha_customizer_settings( $wp_customize ) {
         'priority'   => 1,
     ) );
 
+    // Logo
+
+    $wp_customize->add_setting( 'wha_logo', array(
+        'default' => get_bloginfo('template_directory') . '/app/img/logo.svg',
+    ) );
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'wha_logo',
+            array(
+                'label'      => __( 'Upload a logo', 'theme_name' ),
+                'section'    => 'wha_header',
+                'settings'   => 'wha_logo',
+            )
+        )
+    );
+
     $wp_customize->add_setting( 'wha_logo_position' , array(
         'default'     => 'left',
         'transport'   => 'refresh',
