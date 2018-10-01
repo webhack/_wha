@@ -213,6 +213,11 @@ require THEME_DIR_PATH . '/inc/uikit-wp-navwalker.php';
 require THEME_DIR_PATH . '/inc/customize.php';
 
 /**
+ * Required plugins.
+ */
+require THEME_DIR_PATH . '/inc/class-tgm-plugin-activation.php';
+
+/**
  * Adds WooCommerce support
  */
 add_action( 'after_setup_theme', 'woocommerce_support' );

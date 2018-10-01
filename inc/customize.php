@@ -99,6 +99,23 @@ function wha_customizer_settings( $wp_customize ) {
             ) )
     );
 
+    // Menu Link Hover Color
+    $wp_customize->add_setting( 'wha_menu_link_hover_color' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'wha_menu_link_hover_color',
+            array(
+                'label'      => __( 'Menu Link Hover Color', '_wha' ),
+                'section'    => 'wha_header',
+                'settings'   => 'wha_menu_link_hover_color',
+            ) )
+    );
+
     /********************* SOCIAL ****************************/
     $wp_customize->add_section( 'wha_social' , array(
         'title'      => 'Social Links',

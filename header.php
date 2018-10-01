@@ -22,18 +22,9 @@
 </head>
 
 <body <?php body_class(); ?>>
-<style>
-    <?php if (get_theme_mod('wha_header_background_color')) : ?>
-    header#header {
-        background-color: <?=get_theme_mod('wha_header_background_color')?>;
-    }
-    <?php endif; ?>
-    <?php if (get_theme_mod('wha_menu_link_color')) : ?>
-    header .uk-navbar-nav>li>a {
-        color: <?=get_theme_mod('wha_menu_link_color')?>;
-    }
-    <?php endif; ?>
-</style>
+<?php
+// Theme styles
+include 'inc/theme_styles.php';?>
 <?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
