@@ -4,7 +4,7 @@ header {
     padding-left: 0;
   }
 
-  .uk-navbar-nav li:last-child a {
+  header div:not(.uk-navbar-center) .uk-navbar-nav li:last-child a {
     padding-right: 0;
   }
 }

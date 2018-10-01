@@ -57,6 +57,8 @@ if ( ! function_exists( '_wha_setup' ) ) :
 	*/
 	register_nav_menus( array(
 		'primary'  => __( 'Header menu', '_wha' ),
+        'primarysec'  => __( 'Header menu right', '_wha' ),
+        'primary-offcanvas'  => __( 'Mobile Menu', '_wha' ),
 		) );
     }
 endif; // _wha_setup
@@ -205,6 +207,10 @@ require THEME_DIR_PATH . '/inc/nav-menu-item-custom-fields.php';
  * Load custom WordPress nav walker.
  */
 require THEME_DIR_PATH . '/inc/uikit-wp-navwalker.php';
+/**
+ * Customize theme options.
+ */
+require THEME_DIR_PATH . '/inc/customize.php';
 
 /**
  * Adds WooCommerce support

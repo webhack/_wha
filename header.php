@@ -22,10 +22,22 @@
 </head>
 
 <body <?php body_class(); ?>>
+<style>
+    <?php if (get_theme_mod('wha_header_background_color')) : ?>
+    header#header {
+        background-color: <?=get_theme_mod('wha_header_background_color')?>;
+    }
+    <?php endif; ?>
+    <?php if (get_theme_mod('wha_menu_link_color')) : ?>
+    header .uk-navbar-nav>li>a {
+        color: <?=get_theme_mod('wha_menu_link_color')?>;
+    }
+    <?php endif; ?>
+</style>
 <?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
-    <header style="z-index: 980;" uk-sticky="bottom: #animation"
+    <header id="header" style="z-index: 980;" uk-sticky="bottom: #animation"
             class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
         <div class="uk-container"><?php
             $nav = wp_nav_menu(array(
@@ -36,8 +48,16 @@
                 'echo' => false,
                 'fallback_cb' => false
             ));
+            $navsec = wp_nav_menu(array(
+                'theme_location' => 'primarysec',
+                'menu_class' => 'uk-navbar-nav uk-visible@m',
+                'depth' => 2,
+                'walker' => new WordpressUikitMenuWalker('navbar'),
+                'echo' => false,
+                'fallback_cb' => false
+            ));
             $nav_offcanvas = wp_nav_menu(array(
-                'theme_location' => 'primary',
+                'theme_location' => 'primary-offcanvas',
                 'menu_class' => 'uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical',
                 'depth' => 2,
                 'walker' => new WordpressUikitMenuWalker('offcanvas'),
@@ -46,22 +66,60 @@
                 'container' => 'div',
                 'container_class' => 'uk-offcanvas-bar uk-flex uk-flex-column'
             ));
+            $logo_position = get_theme_mod('wha_header_position', 'left');
             ?>
             <?php if ($nav) : ?>
                 <nav id="navbar" class="uk-navbar">
-                    <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI.'/app/img/logo.svg');?></a>
-                    </div>
-                    <div class="uk-navbar-right">
-                        <?= $nav ?>
+                    <?php
+                    if ($logo_position == 'right') {
+                        ?>
+                        <div class="uk-navbar-left">
+                            <?= $nav ?>
 
 
-                        <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle
-                           class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
-                           uk-toggle="target: #offcanvas-push"></a>
-                    </div>
+                            <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle
+                               class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
+                               uk-toggle="target: #offcanvas-push"></a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                        </div>
+                        <?php
+                    } elseif ($logo_position == 'center') {
+                        ?>
+                        <div class="uk-navbar-center">
+
+                            <div class="uk-navbar-center-left">
+                                <?= $nav ?>
+                            </div>
+                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                            <div class="uk-navbar-center-right">
+                                <?= $navsec ?>
+                            </div>
+                            <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle
+                               class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
+                               uk-toggle="target: #offcanvas-push"></a>
+
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo"><?php echo file_get_contents(THEME_DIR_URI . '/app/img/logo.svg'); ?></a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <?= $nav ?>
+
+
+                            <a uk-navbar-toggle-icon="" href="#offcanvas-menu" uk-toggle
+                               class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon"
+                               uk-toggle="target: #offcanvas-push"></a>
+                        </div>
+                        <?php
+                    }
+                    ?>
                 </nav>
-                <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: push;overlay: true">
+                <div id="offcanvas-menu" class="uk-offcanvas" uk-offcanvas="mode: <?=get_theme_mod('wha_offcanvas_mode', 'none')?>; overlay: true">
                     <?= $nav_offcanvas ?>
                 </div>
             <?php endif; ?>
