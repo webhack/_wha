@@ -70,11 +70,21 @@ function _wha_widgets_init() {
     register_sidebar( array(
         'name'          => __( 'Sidebar', '_wha' ),
         'id'            => 'sidebar-1',
-        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</aside>',
-        'before_title'  => '<h3 class="widget-title">',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="uk-heading">',
         'after_title'   => '</h3>',
     ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer', '_wha' ),
+        'id'            => 'sidebar-footer',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="uk-h3 tm-heading-fragment">',
+        'after_title'   => '</h3>',
+    ) );
+
 }
 add_action( 'widgets_init', '_wha_widgets_init' );
 /**
