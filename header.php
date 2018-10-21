@@ -28,9 +28,9 @@ include 'inc/theme_styles.php';?>
 <?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
-    <?php $header_postion = get_theme_mod('wha_header_position');?>
+    <?php $header_postion = get_theme_mod('wha_header_position_fixed');?>
     <header id="header" style="z-index: 980;" <?php if ($header_postion) {echo 'uk-sticky="bottom: #animation"';} ?>
-            class="uk-navbar-container tm-navbar-container <?php if ($header_postion) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
+            class="uk-navbar-container tm-navbar-container uk-navbar-transparent <?php if ($header_postion) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
             uk-active">
         <div class="uk-container"><?php
             $nav = wp_nav_menu(array(
@@ -70,7 +70,8 @@ include 'inc/theme_styles.php';?>
             <?php if ($nav) : ?>
                 <nav id="navbar" class="uk-navbar">
                     <?php
-                    if ($logo_position == 'right') {
+                    echo $logo_position;
+                    if ($logo_position == 'left') {
                         ?>
                         <div class="uk-navbar-left">
                             <?= $nav ?>
