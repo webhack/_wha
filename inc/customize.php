@@ -65,6 +65,23 @@ function wha_customizer_settings( $wp_customize ) {
         ),
     ) );
 
+    /* Header position */
+    $wp_customize->add_setting( 'wha_header_position' , array(
+        'default'     => 'none',
+        'transport'   => 'refresh',
+    ) );
+
+    $wp_customize->add_setting('wha_header_position', array(
+        'default'    => ''
+    ));
+
+    $wp_customize->add_control( 'wha_header_position', array(
+        'label' => 'Header Position Fixed',
+        'section' => 'wha_header',
+        'settings' => 'wha_header_position',
+        'type' => 'checkbox',
+    ) );
+
     // Header Background Color
     $wp_customize->add_setting( 'wha_header_background_color' , array(
         'default'     => '',

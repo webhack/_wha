@@ -28,8 +28,10 @@ include 'inc/theme_styles.php';?>
 <?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
-    <header id="header" style="z-index: 980;" uk-sticky="bottom: #animation"
-            class="uk-navbar-container tm-navbar-container uk-sticky uk-sticky-fixed uk-active uk-sticky-below">
+    <?php $header_postion = get_theme_mod('wha_header_position');?>
+    <header id="header" style="z-index: 980;" <?php if ($header_postion) {echo 'uk-sticky="bottom: #animation"';} ?>
+            class="uk-navbar-container tm-navbar-container <?php if ($header_postion) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
+            uk-active">
         <div class="uk-container"><?php
             $nav = wp_nav_menu(array(
                 'theme_location' => 'primary',
