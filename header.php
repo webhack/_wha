@@ -28,9 +28,9 @@ include 'inc/theme_styles.php';?>
 <?php do_action('before'); ?>
 
 <div class="uk-offcanvas-content">
-    <?php $header_postion = get_theme_mod('wha_header_position_fixed');?>
-    <header id="header" style="z-index: 980;" <?php if ($header_postion) {echo 'uk-sticky="bottom: #animation"';} ?>
-            class="uk-navbar-container tm-navbar-container uk-navbar-transparent <?php if ($header_postion) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
+    <?php $header_postion_fixed = get_theme_mod('wha_header_position_fixed');?>
+    <header id="header" style="z-index: 980;" <?php if ($header_postion_fixed) {echo 'uk-sticky="bottom: #animation"';} ?>
+            class="uk-navbar-container tm-navbar-container uk-navbar-transparent <?php if ($header_postion_fixed) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
             uk-active">
         <div class="uk-container"><?php
             $nav = wp_nav_menu(array(
@@ -65,13 +65,12 @@ include 'inc/theme_styles.php';?>
                 $wha_logo = '<img src="'.get_theme_mod('wha_logo').'" alt="logo" />';
             }
             $logo = '<a class="uk-navbar-item uk-logo">'.$wha_logo.'</a>';
-            $logo_position = get_theme_mod('wha_header_position', 'left');
+            $logo_position = get_theme_mod('wha_logo_position', 'left');
             ?>
             <?php if ($nav) : ?>
                 <nav id="navbar" class="uk-navbar">
                     <?php
-                    echo $logo_position;
-                    if ($logo_position == 'left') {
+                    if ($logo_position == 'right') {
                         ?>
                         <div class="uk-navbar-left">
                             <?= $nav ?>

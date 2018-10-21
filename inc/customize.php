@@ -66,19 +66,16 @@ function wha_customizer_settings( $wp_customize ) {
     ) );
 
     /* Header position */
-    $wp_customize->add_setting( 'wha_header_position_fixed' , array(
-        'default'     => 'none',
-        'transport'   => 'refresh',
-    ) );
 
     $wp_customize->add_setting('wha_header_position_fixed', array(
-        'default'    => ''
+        'default'    => '',
+        'transport'   => 'refresh',
     ));
 
     $wp_customize->add_control( 'wha_header_position_fixed', array(
         'label' => 'Header Position Fixed',
         'section' => 'wha_header',
-        'settings' => 'wha_header_position',
+        'settings' => 'wha_header_position_fixed',
         'type' => 'checkbox',
     ) );
 
