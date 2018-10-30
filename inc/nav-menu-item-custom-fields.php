@@ -86,7 +86,7 @@ class XTeam_Nav_Menu_Item_Custom_Fields {
 // requiring the nav-menu.php file on every page load is not so wise
 require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
 class XTeam_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
-    function start_el(&$output, $item, $depth, $args) {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         $item_output = '';
         parent::start_el($item_output, $item, $depth, $args);
         // Inject $new_fields before: <div class="menu-item-actions description-wide submitbox">

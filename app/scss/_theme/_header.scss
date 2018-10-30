@@ -7,4 +7,10 @@ header {
   header div:not(.uk-navbar-center) .uk-navbar-nav li:last-child a {
     padding-right: 0;
   }
+
+  &.uk-sticky-fixed {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
 }

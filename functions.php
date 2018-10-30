@@ -227,6 +227,11 @@ require THEME_DIR_PATH . '/inc/customize.php';
  */
 require THEME_DIR_PATH . '/inc/class-tgm-plugin-activation.php';
 
+/*
+ * Show admin bar: false
+ * */
+show_admin_bar(false);
+
 /**
  * Adds WooCommerce support
  */

@@ -29,7 +29,7 @@ include 'inc/theme_styles.php';?>
 
 <div class="uk-offcanvas-content">
     <?php $header_postion_fixed = get_theme_mod('wha_header_position_fixed');?>
-    <header id="header" style="z-index: 980;" <?php if ($header_postion_fixed) {echo 'uk-sticky="bottom: #animation"';} ?>
+    <header id="header" style="z-index: 980;"
             class="uk-navbar-container tm-navbar-container uk-navbar-transparent <?php if ($header_postion_fixed) {echo 'uk-sticky uk-sticky-fixed uk-active uk-sticky-below"';} ?>
             uk-active">
         <div class="uk-container"><?php
