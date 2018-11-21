@@ -13,9 +13,9 @@ define('THEME_DIR_URI', get_template_directory_uri());
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
-if ( ! isset( $content_width ) )
+if (!isset($content_width))
     $content_width = 750; /* pixels */
-if ( ! function_exists( '_wha_setup' ) ) :
+if (!function_exists('_wha_setup')) :
     /**
      * Set up theme defaults and register support for various WordPress features.
      *
@@ -23,26 +23,27 @@ if ( ! function_exists( '_wha_setup' ) ) :
      * before the init hook. The init hook is too late for some features, such as indicating
      * support post thumbnails.
      */
-    function _wha_setup() {
+    function _wha_setup()
+    {
         global $cap, $content_width;
         // Add html5 behavior for some theme elements
-        add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+        add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
         // This theme styles the visual editor with editor-style.css to match the theme style.
         add_editor_style();
         /**
          * Add default posts and comments RSS feed links to head
          */
-        add_theme_support( 'automatic-feed-links' );
+        add_theme_support('automatic-feed-links');
         /**
          * Enable support for Post Thumbnails on posts and pages
          *
          * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
          */
-        add_theme_support( 'post-thumbnails' );
+        add_theme_support('post-thumbnails');
         /**
          * Enable support for Post Formats
          */
-        add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+        add_theme_support('post-formats', array('aside', 'image', 'video', 'quote', 'link'));
 
         /**
          * Make theme available for translation
@@ -50,98 +51,100 @@ if ( ! function_exists( '_wha_setup' ) ) :
          * If you're building a theme based on _wha, use a find and replace
          * to change '_wha' to the name of your theme in all the template files
          */
-        load_theme_textdomain( '_wha', THEME_DIR_PATH . '/languages' );
+        load_theme_textdomain('_wha', THEME_DIR_PATH . '/languages');
 
         /**
-	 * This theme uses wp_nav_menu() in one location.
-	*/
-	register_nav_menus( array(
-		'primary'  => __( 'Header menu', '_wha' ),
-        'primarysec'  => __( 'Header menu right', '_wha' ),
-        'primary-offcanvas'  => __( 'Mobile Menu', '_wha' ),
-		) );
+         * This theme uses wp_nav_menu() in one location.
+         */
+        register_nav_menus(array(
+            'primary' => __('Header menu', '_wha'),
+            'primarysec' => __('Header menu right', '_wha'),
+            'primary-offcanvas' => __('Mobile Menu', '_wha'),
+        ));
     }
 endif; // _wha_setup
-add_action( 'after_setup_theme', '_wha_setup' );
+add_action('after_setup_theme', '_wha_setup');
 /**
  * Register widgetized area and update sidebar with default widgets
  */
-function _wha_widgets_init() {
-    register_sidebar( array(
-        'name'          => __( 'Sidebar', '_wha' ),
-        'id'            => 'sidebar-1',
+function _wha_widgets_init()
+{
+    register_sidebar(array(
+        'name' => __('Sidebar', '_wha'),
+        'id' => 'sidebar-1',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="uk-heading">',
-        'after_title'   => '</h3>',
-    ) );
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="uk-heading">',
+        'after_title' => '</h3>',
+    ));
 
-    register_sidebar( array(
-        'name'          => __( 'Footer', '_wha' ),
-        'id'            => 'sidebar-footer',
+    register_sidebar(array(
+        'name' => __('Footer', '_wha'),
+        'id' => 'sidebar-footer',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="uk-h3 tm-heading-fragment">',
-        'after_title'   => '</h3>',
-    ) );
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="uk-h3 tm-heading-fragment">',
+        'after_title' => '</h3>',
+    ));
 
 }
-add_action( 'widgets_init', '_wha_widgets_init' );
+
+add_action('widgets_init', '_wha_widgets_init');
 /**
  * Enqueue scripts and styles
  */
-function _wha_scripts() {
+function _wha_scripts()
+{
     // load _wha styles
-    wp_enqueue_style( '_wha-style', get_stylesheet_uri() );
-    wp_enqueue_style( '_wha-main-styles', THEME_DIR_URI . '/app/css/main.min.css', false, '1.0.0' );
+    wp_enqueue_style('_wha-style', get_stylesheet_uri());
+    wp_enqueue_style('_wha-main-styles', THEME_DIR_URI . '/app/css/main.min.css', false, '1.0.0');
 
 
     wp_enqueue_script("jquery");
     // load bootstrap js
-    wp_enqueue_script('_wha-main', THEME_DIR_URI . '/app/js/scripts.min.js', array('jquery') );
-    wp_enqueue_script('_wha-uikit', 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js', array('jquery') );
-    wp_enqueue_script('_wha-uikit-icons', 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js', array('jquery') );
+    wp_enqueue_script('_wha-main', THEME_DIR_URI . '/app/js/scripts.min.js', array('jquery'));
+    wp_enqueue_script('_wha-uikit', 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js', array('jquery'));
+    wp_enqueue_script('_wha-uikit-icons', 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js', array('jquery'));
 }
-add_action( 'wp_enqueue_scripts', '_wha_scripts' );
+
+add_action('wp_enqueue_scripts', '_wha_scripts');
 
 
-
-
-
-if ( ! function_exists( '_wha_posted_on' ) ) :
+if (!function_exists('_wha_posted_on')) :
     /**
      * Prints HTML with meta information for the current post-date/time and author.
      */
-    function _wha_posted_on() {
+    function _wha_posted_on()
+    {
         $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-        $time_string = sprintf( $time_string,
-            esc_attr( get_the_date( 'c' ) ),
-            esc_html( get_the_date() )
+        $time_string = sprintf($time_string,
+            esc_attr(get_the_date('c')),
+            esc_html(get_the_date())
         );
-        $time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
-            esc_url( get_permalink() ),
-            esc_attr( get_the_time() ),
+        $time_string = sprintf('<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
+            esc_url(get_permalink()),
+            esc_attr(get_the_time()),
             $time_string
         );
-        if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ){
+        if (get_the_time('U') !== get_the_modified_time('U')) {
             $time_string_update = '<time class="updated" datetime="%1$s">%2$s</time>';
-            $time_string_update = sprintf( $time_string_update,
-                esc_attr( get_the_modified_date( 'c' ) ),
-                esc_html( get_the_modified_date() )
+            $time_string_update = sprintf($time_string_update,
+                esc_attr(get_the_modified_date('c')),
+                esc_html(get_the_modified_date())
             );
-            $time_string_update = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
-                esc_url( get_permalink() ),
-                esc_attr( get_the_time() ),
+            $time_string_update = sprintf('<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
+                esc_url(get_permalink()),
+                esc_attr(get_the_time()),
                 $time_string_update
             );
             $time_string .= __(', updated on ', '_wha') . $time_string_update;
         }
-        printf( __( '<span class="posted-on">Posted on %1$s</span><span class="byline"> by %2$s</span>', '_wha' ),
+        printf(__('<span class="posted-on">Posted on %1$s</span><span class="byline"> by %2$s</span>', '_wha'),
             $time_string,
-            sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
-                esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-                esc_attr( sprintf( __( 'View all posts by %s', '_wha' ), get_the_author() ) ),
-                esc_html( get_the_author() )
+            sprintf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+                esc_url(get_author_posts_url(get_the_author_meta('ID'))),
+                esc_attr(sprintf(__('View all posts by %s', '_wha'), get_the_author())),
+                esc_html(get_the_author())
             )
         );
     }
@@ -153,7 +156,8 @@ endif;
  * Creates bootstraped pagination for paginated posts
  *
  */
-function _wha_link_pages() {
+function _wha_link_pages()
+{
     global $numpages, $page, $post;
     if (1 != $numpages):
         $input_width = strlen((string)$numpages) + 3;
@@ -163,7 +167,7 @@ function _wha_link_pages() {
                 <ul class="pagination">
                     <li class="disabled hidden-xs">
                 <span>
-                    <span aria-hidden="true"><?php _e('Page', '_wha'); ?> <?php echo $page; ?> <?php _e('of', '_wha'); ?> <?php echo $numpages; ?></span>
+                    <span aria-hidden="true"><?php _e('Page', '_wha'); ?><?php echo $page; ?><?php _e('of', '_wha'); ?><?php echo $numpages; ?></span>
                 </span>
                     </li>
                     <li><?php echo _wha_link_page(1, 'First'); ?>&laquo;<span class="hidden-xs"> <?php _e('First', '_wha'); ?></span></a></li>
@@ -174,7 +178,7 @@ function _wha_link_pages() {
                     <?php endif; ?>
 
                     <?php $start_page = min(max($page - 2, 1), max($numpages - 4, 1)); ?>
-                    <?php $end_page   = min(max($page + 2, 5), $numpages); ?>
+                    <?php $end_page = min(max($page + 2, 5), $numpages); ?>
 
                     <?php for ($i = $start_page; $i <= $end_page; $i++): ?>
                         <?php if ($page == $i): ?>
@@ -235,7 +239,70 @@ show_admin_bar(false);
 /**
  * Adds WooCommerce support
  */
-add_action( 'after_setup_theme', 'woocommerce_support' );
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
+add_action('after_setup_theme', 'woocommerce_support');
+function woocommerce_support()
+{
+    add_theme_support('woocommerce');
 }
+
+
+/* Page Meta Boxes*/
+//register page checkbox options
+function wha_get_options_checkboxes()
+{
+    return array(
+        array('wha_hide_header', 'Hide Header'),
+        array('wha_hide_footer', 'Hide Footer')
+    );
+}
+
+//return HTML for checkbox
+function wha_return_checkbox($postID, $slug, $title)
+{
+    $value = get_post_meta($postID, '_' . $slug, true);
+    ?>
+    <div class="wha-field wha-checkbox">
+        <input type="checkbox" id="<?php echo $slug; ?>" name="<?php echo $slug; ?>" <?php checked($value, 'on'); ?>>
+        <label for="<?php echo $slug; ?>"><?php echo $title; ?></label>
+    </div>
+    <?php
+}
+
+//register page options group
+function wha_page_add_custom_box()
+{
+    $screens = ['page'];
+    foreach ($screens as $screen) {
+        add_meta_box(
+            'wha_box_id',           // Unique ID
+            'Page Options Group',  // Box title
+            'wha_page_options_group',  // Content callback, must be of type callable
+            $screen                   // Post type
+        );
+    }
+}
+add_action('add_meta_boxes', 'wha_page_add_custom_box', 10, 0);
+
+function wha_page_options_group($post)
+{
+    $checkboxes = wha_get_options_checkboxes();
+
+    foreach ($checkboxes as $checkbox) {
+        echo wha_return_checkbox($post->ID, $checkbox[0], $checkbox[1]);
+    }
+}
+
+function wha_page_save_postdata($post_id)
+{
+    $checkboxes = wha_get_options_checkboxes();
+    foreach ($checkboxes as $checkbox) {
+        update_post_meta(
+            $post_id,
+            '_' . $checkbox[0],
+            $_POST[$checkbox[0]]
+        );
+    }
+
+}
+
+add_action('save_post', 'wha_page_save_postdata');
