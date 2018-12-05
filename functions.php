@@ -244,8 +244,12 @@ function woocommerce_support()
     add_theme_support('woocommerce');
 }
 
+/**
+ *  Custom post types
+ * */
+require THEME_DIR_PATH . '/inc/custom-post-types.php';
 
 /*
  * Show admin bar: false
  * */
-show_admin_bar(false);
+//show_admin_bar(false);
