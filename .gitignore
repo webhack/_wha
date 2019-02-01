@@ -1,5 +1,10 @@
 /node_modules/
+/app/scss/uikit/
+/app/scss/fontawesome/
+/app/fonts/
 /app/js/scripts.min.js
+/app/js/uikit/
+/fonts/
 /.git/
 .idea/
 /app/css/
