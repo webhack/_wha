@@ -131,15 +131,21 @@ gulp.task( 'scripts', function() {
     var scripts = [
 
         // Start - All BS4 stuff
-        paths.dev + '/js/uikit/bootstrap.bundle.js',
+        // paths.dev + '/js/uikit/bootstrap.bundle.js',
 
         // End - All BS4 stuff
 
-        paths.dev + '/js/skip-link-focus-fix.js',
-
+        // paths.dev + '/js/skip-link-focus-fix.js',
+        //
         // Adding currently empty javascript file to add on for your own themesÂ´ customizations
         // Please add any customizations to this .js file only!
-        paths.dev + '/js/custom-javascript.js'
+        // paths.dev + '/js/custom-javascript.js',
+
+
+        // paths.dev + '/js/common.js',
+        paths.dev + '/js/uikit/uikit.js',
+        // paths.dev + '/js/uikit/icons.js'
+
     ];
     gulp.src( scripts )
         .pipe( concat( 'theme.min.js' ) )

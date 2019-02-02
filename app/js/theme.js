@@ -5,4 +5,4 @@ document.addEventListener('wpcf7mailsent', function (event) {
         jQuery('.wpcf7-response-output').prepend("<a class='uk-alert-close' uk-close></a>");
     }
     setTimeout(func, 1000);
-});
+}); 
